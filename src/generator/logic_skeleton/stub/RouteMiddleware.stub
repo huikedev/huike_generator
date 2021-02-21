@@ -1,0 +1,19 @@
+<?php
+
+namespace {%namespace%};
+
+use huikedev\huike_base\facade\AppRequest;
+
+class {%className%}
+{
+    public function handle($request, \Closure $next)
+    {
+        // todo:路由前置中间件逻辑
+        AppRequest::setModule('{%modulePathName%}');
+        AppRequest::setNamespace('{%moduleNameSpace%}');
+
+        // 在此你可以进行用户鉴权、访问频次限制等逻辑
+        // 可参考 huikedev\dev_admin\common\middlewares\DevRouteMiddleware
+        return $next($request);
+    }
+}

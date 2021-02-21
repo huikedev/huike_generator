@@ -1,0 +1,25 @@
+<?php
+
+namespace {%namespace%};
+
+class {%className%}
+{
+    protected $apiRoutes = {%apiRoutes%};
+    protected $responseRoutes = {%responseRoutes%};
+    protected $requestRoutes = {%requestRoutes%};
+
+    public function getApiRoutes()
+    {
+        return $this->apiRoutes;
+    }
+
+    public function getResponseRoutes()
+    {
+        return $this->responseRoutes;
+    }
+
+    public function getRequestRoutes()
+    {
+        return $this->requestRoutes;
+    }
+}

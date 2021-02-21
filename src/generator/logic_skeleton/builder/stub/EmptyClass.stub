@@ -1,0 +1,9 @@
+<?php
+
+namespace {%namespace%};
+
+{%importReplace%}
+{%classAnnotation%}
+{%classType%}class {%className%}{%classExtend%}
+{
+    {%classProperties%}

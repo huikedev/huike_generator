@@ -1,0 +1,13 @@
+<?php
+
+namespace {%namespace%};
+
+{%importClass%}
+
+class {%className%} extends {%baseModel%}
+{
+{%modelProperty%}
+{%modelFunctions%}
+
+// GENERATED END
+}

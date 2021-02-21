@@ -1,0 +1,17 @@
+{
+    "name": "huikedev/huike_generator",
+    "description": "generator lib for huikedev",
+    "type": "think-extend",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "liuqiandev",
+            "email": "310227477@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "psr-4": {
+        "huikedev\\huike_generator\\": "src"
+    },
+    "require": {}
+}
