@@ -10,8 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "psr-4": {
-        "huikedev\\huike_generator\\": "src"
+    "autoload": {
+        "psr-4": {
+            "huikedev\\huike_generator\\": "src"
+        }
     },
     "require": {}
 }
