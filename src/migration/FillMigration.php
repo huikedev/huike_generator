@@ -9,7 +9,6 @@ use think\helper\Str;
 
 class FillMigration
 {
-    protected $fileEnd = "}\n}\n";
     protected $migrationCode = [];
     protected $indexFields = [];
     protected $jsonFields = [];
@@ -39,7 +38,6 @@ class FillMigration
     {
         $modelName = Str::studly($modelName);
         $migrationFile = file_get_contents($migrationPath);
-        $migrationFile = preg_replace('/'.$this->fileEnd.'/','',$migrationFile);
         $this->getTableCode($modelName,$remark);
         $this->getFieldsCode($modelFieldsCollection);
         $migrationFile .= implode(PHP_EOL,$this->migrationCode);

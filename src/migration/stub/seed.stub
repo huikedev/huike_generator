@@ -15,5 +15,3 @@ class SeederClass extends Seeder
     public function run()
     {
 
-    }
-}

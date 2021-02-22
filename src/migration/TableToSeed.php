@@ -69,7 +69,6 @@ class TableToSeed extends TableActionAbstract
     {
         $this->file = (new MakeSeed())->setPath($this->path)->handle($this->table.'_'.Str::random(6,3));
         $this->content = file_get_contents($this->file);
-        $this->content = preg_replace('/'.$this->fileEnd.'/','',$this->content);
         return $this;
     }
 }

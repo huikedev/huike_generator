@@ -15,5 +15,7 @@
             "huikedev\\huike_generator\\": "src"
         }
     },
-    "require": {}
+    "require": {
+        "topthink/think-migration": "^3.0"
+    }
 }

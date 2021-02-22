@@ -15,6 +15,7 @@ use think\Exception;
 class MakeRoutes extends MakeClassAbstract
 {
     protected $routes = [];
+    protected $overwrite = false;
     /**
      * @var HuikeModules
      */
@@ -26,6 +27,12 @@ class MakeRoutes extends MakeClassAbstract
     protected function getStub()
     {
         // TODO: Implement getStub() method.
+    }
+
+    public function setOverwrite(bool $overwrite): MakeRoutes
+    {
+        $this->overwrite = $overwrite;
+        return $this;
     }
 
     public function handle(int $moduleId)
@@ -80,8 +87,10 @@ class MakeRoutes extends MakeClassAbstract
             throw new Exception($dir.' 不可写');
         }
         if(file_exists($routeFile)){
-            $originRoute = file_get_contents($routeFile);
-            file_put_contents($routeFile.'.bak-'.time(),$originRoute);
+            if($this->overwrite === false){
+                $originRoute = file_get_contents($routeFile);
+                file_put_contents($routeFile.'.bak-'.time(),$originRoute);
+            }
             unlink($routeFile);
         }
         $newRoute = "<?php \n";

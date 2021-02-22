@@ -29,5 +29,3 @@ class MigratorClass extends Migrator
     public function change()
     {
 
-    }
-}
