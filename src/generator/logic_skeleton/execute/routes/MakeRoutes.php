@@ -131,9 +131,17 @@ class MakeRoutes extends MakeClassAbstract
         if(empty($this->module->route_middleware)){
             $this->routeCode[] = '});';
         }else{
-            $middleware = '[\'';
-            $middleware .=implode('\',',$this->module->route_middleware);
-            $middleware .='\']';
+            $middleware = '[';
+            $count = count($this->module->route_middleware);
+            foreach ($this->module->route_middleware as $key => $routeMiddleware){
+                if($key === $count - 1){
+                    $middleware .= '\''.$routeMiddleware.'\'';
+                }else{
+                    $middleware .= '\''.$routeMiddleware.'\',';
+                }
+
+            }
+            $middleware .=']';
             $this->routeCode[] = '})->middleware('.$middleware.');';
         }
 
