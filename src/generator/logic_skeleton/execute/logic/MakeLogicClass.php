@@ -108,7 +108,7 @@ class MakeLogicClass extends ClassGenerateAbstract
             ClassBuilder::addImport($this->fullClassName,$this->facadeClass);
         }
 
-        $facade = pathinfo($this->facadeClass,PATHINFO_BASENAME);
+        $facade = class_basename($this->facadeClass);
         if($this->action->request_type === RequestMethods::GET || $this->action->request_type === RequestMethods::ANY ){
             $methodBody[] = "\t".'$this->data = '.$facade."::".$this->action->action_name."();";
         }else{

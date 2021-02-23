@@ -78,7 +78,7 @@ class ClassBuilder
 
     public function setExtendClass(string $class)
     {
-        $this->extendClass = pathinfo($class,PATHINFO_FILENAME);
+        $this->extendClass = class_basename($class);
         self::addImport($this->fullClassName,$class);
     }
 
@@ -97,7 +97,7 @@ class ClassBuilder
 
     public function setImplements(string $class)
     {
-        $this->implements[] = pathinfo($class,PATHINFO_FILENAME);
+        $this->implements[] = class_basename($class);
         self::addImport($this->fullClassName,$class);
     }
 
@@ -169,8 +169,9 @@ class ClassBuilder
     protected function createClass()
     {
         $stub = __DIR__ . DIRECTORY_SEPARATOR .'stub'.DIRECTORY_SEPARATOR.'EmptyClass.stub';
-        $dirname = pathinfo($this->fullClassName,PATHINFO_DIRNAME);
-        $basename = pathinfo($this->fullClassName,PATHINFO_BASENAME);
+        $array = explode('\\',$this->fullClassName);
+        $className = array_pop($array);
+        $namespace = implode('\\',$array);
         $classType = $this->classType ==='common' ?'':$this->classType;
         $extend = empty($this->extendClass) ? '' : ' extends '.$this->extendClass;
         return str_replace([
@@ -182,11 +183,11 @@ class ClassBuilder
             '{%classExtend%}',
             '{%classProperties%}'
         ], [
-            $dirname,
+            $namespace,
             self::getImportSource($this->fullClassName),
             '',// Annotation 预留
             $classType,
-            $basename,
+            $className,
             $extend,
             ''//property 预留
         ], file_get_contents($stub));

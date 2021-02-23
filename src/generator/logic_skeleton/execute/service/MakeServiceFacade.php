@@ -107,7 +107,7 @@ class MakeServiceFacade extends MakeClassAbstract
                 array_pop($tempDir);
             }
             $this->facadeNamespace = implode('\\',$tempNamespace).'\facade';
-            $this->facadeDir = implode(DIRECTORY_SEPARATOR,$tempDir).'\facade';
+            $this->facadeDir = implode(DIRECTORY_SEPARATOR,$tempDir).DIRECTORY_SEPARATOR.'facade';
             $this->isInApplication = false;
         }
         return $this;
